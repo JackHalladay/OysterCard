@@ -18,6 +18,10 @@ MAXIMUM_BALANCE = 90
   def touch_in
     @journey = true
   end
+  
+  def touch_out
+    @journey = false
+  end
 
   def in_journey?
     @journey
