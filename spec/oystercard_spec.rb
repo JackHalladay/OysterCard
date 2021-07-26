@@ -20,4 +20,9 @@ describe OysterCard do
     subject.top_up(30)
     expect{subject.deduct(10)}.to change{subject.balance}.by -10
   end
+
+  it "can log touching in" do
+    subject.touch_in
+    expect(subject.in_journey?).to eq(true)
+  end
 end

@@ -15,6 +15,14 @@ MAXIMUM_BALANCE = 90
     @balance -= down_amount
   end
 
+  def touch_in
+    @journey = true
+  end
+
+  def in_journey?
+    @journey
+  end
+
   private
   def exceeded?
     (@balance + @up_amount) > MAXIMUM_BALANCE
