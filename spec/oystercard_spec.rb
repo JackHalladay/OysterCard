@@ -22,6 +22,7 @@ describe OysterCard do
   end
 
   it "can log touching in" do
+    subject.top_up(5)
     subject.touch_in
     expect(subject.in_journey?).to eq(true)
   end
@@ -29,5 +30,10 @@ describe OysterCard do
   it "can log touching out" do
     subject.touch_out
     expect(subject.in_journey?).to eq(false)
+  end
+
+  it "needs a minimum of £1" do
+    minimum_amount = OysterCard::MINIMUM_BALANCE
+    expect{subject.touch_in}.to raise_error("You do not have the minimum amount of #{minimum_amount}")
   end
 end
