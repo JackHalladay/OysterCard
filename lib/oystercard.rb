@@ -5,14 +5,18 @@ MAXIMUM_BALANCE = 90
     @balance = 0
   end
 
-  def top_up(amount)
-    @amount = amount
+  def top_up(up_amount)
+    @up_amount = up_amount
     fail "Maximum balance of #{MAXIMUM_BALANCE} has been exceeded" if self.exceeded?
-    @balance += @amount
+    @balance += @up_amount
+  end
+
+  def deduct(down_amount)
+    @balance -= down_amount
   end
 
   private
   def exceeded?
-    (@balance + @amount) > MAXIMUM_BALANCE
+    (@balance + @up_amount) > MAXIMUM_BALANCE
   end
 end
